@@ -1,0 +1,65 @@
+<app-menu></app-menu>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+
+<body>
+    <section class="container">
+        <header>Registration Form</header>
+        <form class="form" [formGroup]="user" (ngSubmit)="register()">
+            <div class="column">
+                <div class="input-box">
+                    <label>First Name</label>
+                    <input type="text" placeholder="Enter first name" name="FirstName" formControlName="firstName"
+                        required />
+                    <span *ngIf="user.get('firstName')?.invalid && user.get('firstName')?.touched" class="error-message">Invalid First
+                        Name!!!!</span>
+                </div>
+                <div class="input-box">
+                    <label>Last name</label>
+                    <input type="text" placeholder="Enter Last name" name="lastName" formControlName="lastName" required />
+                    <span *ngIf="user.get('lastName')?.invalid && user.get('lastName')?.touched" class="error-message">Invalid last Name !!!
+                    </span>
+
+                </div>
+            </div>
+            <div class="input-box">
+                <label>Email</label>
+                <input type="text" placeholder="Enter Email Address" name="email" formControlName="email" required />
+                <span *ngIf="user.get('email')?.invalid && user.get('email')?.touched" class="error-message">Invalid email !!! </span>
+            </div>
+            <div class="input-box">
+                <label>Mobile Number</label>
+                <input type="number" placeholder="Enter Mobile Number" name="mobile" formControlName="mobile" required />
+                <span *ngIf="user.get('mobile')?.invalid && user.get('mobile')?.touched" class="error-message">Invalid Mobile number !!!!</span>
+            </div>
+            <div class="column">
+                <div class="input-box">
+                    <label>DOB</label>
+                    <input type="date" placeholder="Enter DOB" required />
+                </div>
+                <div class="gender-box">
+                    <h3>Gender</h3>
+                    <div class="gender-option">
+                        <div class="gender">
+                            <input type="radio" id="check-male" name="gender" checked />
+                            <label for="check-male">male</label>
+                        </div>
+                        <div class="gender">
+                            <input type="radio" id="check-female" name="gender" />
+                            <label for="check-female">Female</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button [disabled]="user.invalid" type="submit">Register</button>
+        </form>
+    </section>
+</body>
+
+</html>
